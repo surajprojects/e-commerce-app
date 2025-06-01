@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import AuthLayout from "./components/auth/AuthLayout";
 import AuthLogin from "./pages/auth/AuthLogin";
 import AuthRegister from "./pages/auth/AuthRegister";
@@ -10,7 +10,7 @@ import AdminFeatures from "./pages/admin-view/AdminFeatures";
 import NotFound from "./pages/not-found/NotFound";
 import ShoppingLayout from "./components/shopping-view/ShoppingLayout";
 import ShoppingHome from "./pages/shopping-view/ShoppingHome";
-import ProductsListing from "./pages/shopping-view/ProductsListing";
+import ProductsListing from "./pages/shopping-view/ShoppingListing";
 import AccountPage from "./pages/shopping-view/AccountPage";
 import Checkout from "./pages/shopping-view/ShoppingCheckout";
 import CheckAuth from "./components/common/CheckAuth";
@@ -20,6 +20,7 @@ import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { checkAuth } from "./features/auth/authSlice";
 import { Skeleton } from "@/components/ui/skeleton"
+
 
 
 const App = () => {
@@ -42,6 +43,9 @@ const App = () => {
 
     <div className="flex flex-col overflow-hidden bg-white">
       <Routes>
+
+       {/* Redirect root '/' to '/auth/login' */}
+        <Route path="/" element={<Navigate to="/auth/login" replace />} />
         
         <Route path="/auth" element={
           <CheckAuth isAuthenticated={isAuthenticated} user={user}>

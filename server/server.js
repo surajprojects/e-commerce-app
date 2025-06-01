@@ -2,8 +2,9 @@ const express = require("express");
 const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
 const cors = require("cors");
-const authRouter = require("./routes/auth/authRoutes.js")
-
+const authRouter = require("./routes/auth/authRoutes.js");
+const adminProductsRouter = require("./routes/admin/productsRoutes.js")
+const shopProductsRouter = require("./routes/shop/shop-products-routes.js")
 require('dotenv').config();
 
 async function connectDB() {
@@ -39,6 +40,9 @@ app.use(
 app.use(cookieParser());
 app.use(express.json());
 app.use("/api/auth",authRouter);
+app.use("/api/admin/products",adminProductsRouter);
+app.use("/api/shop/products",shopProductsRouter);
+
 
 
 app.listen(PORT,() => console.log(`Server is running on port ${PORT}`));

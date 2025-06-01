@@ -155,9 +155,9 @@ export const categoryOptionsMap = {
 
 export const brandOptionsMap = {
   nike: "Nike",
-  adidas: "Adidas",
+  adidas:"Adidas",
   puma: "Puma",
-  levi: "Levi",
+  levi: "Levi's",
   zara: "Zara",
   "h&m": "H&M",
 };
